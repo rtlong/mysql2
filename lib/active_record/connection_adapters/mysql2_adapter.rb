@@ -511,7 +511,7 @@ module ActiveRecord
         result.each(:symbolize_keys => true, :as => :hash) do |row|
           keys << row[:Field] if row[:Key] == "PRI"
         end
-        keys.length == 1 ? [keys.first, nil] : nil
+        keys.any? ? [keys, nil] : nil
       end
 
       # Returns just a table's primary key
